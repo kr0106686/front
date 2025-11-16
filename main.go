@@ -8,11 +8,15 @@ import (
 	"github.com/kr0106686/public/filer"
 )
 
-var socketURL = os.Getenv("SOCKET_URL")
-var port = os.Getenv("FRONT_PORT")
-var staticDir = "/static"
-
 func main() {
+	socketURL := os.Getenv("SOCKET_URL")
+	port := os.Getenv("FRONT_PORT")
+	staticDir := "/static"
+
+	log.Println(socketURL)
+	log.Println(port)
+	log.Println(staticDir)
+
 	f := filer.New()
 
 	http.Handle("/static/", http.StripPrefix("/static/", http.FileServer(http.Dir(staticDir))))
